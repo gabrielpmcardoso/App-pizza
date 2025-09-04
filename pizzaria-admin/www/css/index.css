@@ -1,0 +1,127 @@
+:root{
+  --bg:#0f0f10;
+  --surf:#ffffff;
+  --surf-2:#f5f5f7;
+  --text:#111;
+  --muted:#6b7280;
+  --brand:#2563eb;
+  --brand-press:#1d4ed8;
+  --danger:#ef4444;
+  --radius:16px;
+  --shadow:0 10px 25px rgba(0,0,0,.12);
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{
+  -webkit-touch-callout:none;
+  -webkit-text-size-adjust:none;
+  -webkit-user-select:none;
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--text);
+  background:linear-gradient(180deg,#fafafa,#f0f3f7);
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+
+.topbar{
+  position:sticky; top:0; z-index:2;
+  display:flex; align-items:center; gap:.75rem;
+  padding:.75rem 1rem;
+  background:rgba(255,255,255,.8);
+  backdrop-filter:saturate(180%) blur(12px);
+  border-bottom:1px solid #e5e7eb;
+}
+
+.app-title{font-size:1.1rem; margin:0; font-weight:700; letter-spacing:.2px}
+
+.btn-voltar{
+  appearance:none; border:0; background:#fff; padding:.5rem .75rem; border-radius:12px;
+  box-shadow:var(--shadow); font-size:1rem; cursor:pointer;
+}
+.btn-voltar:active{transform:translateY(1px) scale(.99)}
+
+.app-lista{
+  display:flex; flex-direction:column;
+  gap:.75rem;
+  width:100%; height:100vh;
+  padding: .75rem;
+}
+
+.superior{
+  flex:1; overflow:auto; display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:.75rem; padding:.25rem;
+}
+
+.linha{
+  position:relative; border:1px solid #e5e7eb; border-radius:var(--radius);
+  background:linear-gradient(180deg,#fff,#fafafa);
+  padding:1rem; font-size:1rem; font-weight:600;
+  box-shadow:var(--shadow);
+  display:flex; align-items:center; justify-content:space-between; gap:.75rem;
+  min-height:64px;
+}
+.linha::after{
+  content:"▶"; font-size:.9rem; color:#9ca3af;
+}
+
+.inferior{ display:flex; gap:.75rem; }
+
+.botao-novo{
+  appearance:none; width:100%; padding:1rem 1.25rem;
+  font-size:1rem; font-weight:700; border-radius:var(--radius);
+  border:0; color:#fff; background:linear-gradient(180deg,var(--brand),var(--brand-press));
+  box-shadow:var(--shadow); cursor:pointer;
+}
+.botao-novo:active{transform:translateY(1px) scale(.99)}
+
+.app-cadastro{
+  display:none; flex-direction:column; gap:1rem;
+  width:100%; height:100vh; padding:.75rem;
+}
+
+.imagem{
+  border:1px dashed #cbd5e1; border-radius:var(--radius);
+  background-color:#e5e7eb; background-repeat:no-repeat; background-position:center; background-size:cover;
+  min-height:220px; box-shadow:var(--shadow);
+  display:flex; align-items:center; justify-content:center;
+  color:#64748b; font-weight:600;
+}
+.imagem:empty::before{ content:"Foto da pizza"; }
+
+.form{ display:flex; flex-direction:column; gap:.75rem; }
+.form-linha{ display:flex; align-items:center; gap:.75rem; }
+.form-linha-esq{ width:90px; font-weight:600; color:#374151; }
+.form-linha-dir{ flex:1; }
+.form-linha-dir input{
+  width:100%; appearance:none; border:1px solid #e5e7eb; border-radius:14px; padding:.9rem 1rem;
+  font-size:1rem; background:#fff; outline:none;
+}
+.form-linha-dir input:focus{ border-color:var(--brand); box-shadow:0 0 0 4px rgba(37,99,235,.12); }
+
+.botoes{ display:grid; grid-template-columns:repeat(4,1fr); gap:.75rem; }
+.botao{
+  appearance:none; padding:.9rem 1rem; font-size:1rem; font-weight:700; border-radius:14px;
+  border:1px solid #e5e7eb; background:#fff; cursor:pointer; box-shadow:var(--shadow);
+}
+.botao:active{ transform:translateY(1px) scale(.99) }
+.btn-cancelar{ background:#fff0f0; border-color:#ffe2e2 }
+#btnExcluir{ background:#fee2e2; border-color:#fecaca }
+
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important; transition:none !important}
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --surf:#18181b; --surf-2:#0b0b0c; --text:#f7f7f7; --muted:#a1a1aa; --brand:#60a5fa; --brand-press:#3b82f6;
+  }
+  body{ background:linear-gradient(180deg,#0b0b0c,#0f172a); color:var(--text); }
+  .topbar{ background:rgba(24,24,27,.7); border-color:#27272a }
+  .linha{ background:linear-gradient(180deg,#1f2937,#111827); border-color:#27272a }
+  .imagem{ background-color:#111827; border-color:#27272a; color:#94a3b8 }
+  .botao, .btn-voltar{ background:#18181b; border-color:#27272a; color:var(--text) }
+  .botao-novo{ color:#0b1220 }
+  .form-linha-dir input{ background:#111827; border-color:#303038; color:var(--text) }
+}
